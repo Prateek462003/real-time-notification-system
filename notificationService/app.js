@@ -1,10 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import notificationRoutes from "./src/routes/notification";
 
 dotenv.config();
 
 const app = express();
+
+app.use("/api", notificationRoutes);
 
 const PORT = process.env.PORT || 4000;
 

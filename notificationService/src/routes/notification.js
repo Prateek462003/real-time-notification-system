@@ -3,7 +3,8 @@ import { authMiddleware } from "../middlewares/auth.js";
 import {
   createNotification,
   getNotification,
-  getNotificationsById,
+  getNotificationById,
+  markNotificationAsRead,
 } from "../controllers/notification.js";
 
 const router = Router();
@@ -12,6 +13,8 @@ router.post("/notifications", authMiddleware, createNotification);
 
 router.get("/notifications", authMiddleware, getNotification);
 
-router.put("/notifications/:id", authMiddleware, getNotificationsById);
+router.put("/notifications/:id", authMiddleware, markNotificationAsRead);
+
+router.put("/notifications/:id", authMiddleware, getNotificationById);
 
 export default router;
