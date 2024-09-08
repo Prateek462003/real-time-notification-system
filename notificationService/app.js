@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import notificationRoutes from "./src/routes/notification";
+import notificationRoutes from "./src/routes/notification.js";
 
 dotenv.config();
 
@@ -9,7 +9,7 @@ const app = express();
 
 app.use("/api", notificationRoutes);
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 
 mongoose
   .connect(process.env.MONGO_URI)

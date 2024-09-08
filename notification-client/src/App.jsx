@@ -5,7 +5,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import Signup from "./components/signup";
+import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Notifications from "./components/Notifications";
 

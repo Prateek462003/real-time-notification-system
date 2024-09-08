@@ -2,56 +2,39 @@ version: "3.7"
 services:
   auth-service:
     build: ./authService
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/auth
-      - JWT_SECRET=mysecret
     ports:
       - "4000:4000"
-    depends_on:
-      - mongo
 
   notification-service:
     build: ./notificationService
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/notifications
-      - JWT_SECRET=mysecret
-      - RABBITMQ_URL=amqp://rabbitmq
     ports:
       - "4001:4001"
-    depends_on:
-      - mongo
-      - rabbitmq
 
   real-time-service:
     build: ./real-time
-    environment:
-      - RABBITMQ_URL=amqp://rabbitmq
     ports:
       - "3000:3000"
-    depends_on:
-      - rabbitmq
 
   client:
     build: ./notification-client
     ports:
       - "5173:5173"
-    depends_on:
-      - auth-service
-      - notification-service
-      - real-time-service
+    # depends_on:
+    #   - auth-service
+    #   - notification-service
+    #   - real-time-service
 
-  mongo:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
+  # mongo:
+  #   image: mongo:latest
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - mongo-data:/data/db
 
-  rabbitmq:
-    image: rabbitmq:3-management
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-
-volumes:
-  mongo-data:
+  # rabbitmq:
+  #   image: rabbitmq:3-management
+  #   ports:
+  #     - "5672:5672"
+  #     - "15672:15672"
+# volumes:
+#   mongo-data:

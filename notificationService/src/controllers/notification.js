@@ -1,5 +1,6 @@
-import { sendNotificationToQueue } from "../queues/sendNotification";
-import { Notification } from "../models/notification";
+// import { sendNotificationToQueue } from "../queues/sendNotification";
+import { sendNotificationToQueue } from "../queues/sendNotification.js";
+import { Notification } from "../models/notification.js";
 
 export const createNotification = async (req, res) => {
   try {
