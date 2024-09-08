@@ -1,6 +1,4 @@
 import { Router } from "express";
-import { Notification } from "../models/notification.js";
-// import { sendNotificationToQueue } from "../queues/sendNotification.js";
 import { authMiddleware } from "../middlewares/auth.js";
 import {
   createNotification,

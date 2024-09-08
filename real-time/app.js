@@ -1,7 +1,10 @@
 import express from "express";
 import http from "http";
-import { init } from "./sockets/socket.js";
-import { listenToNotifications } from "./queues/listenNotifications.js";
+import { init } from "./src/sockets/socket.js";
+import { listenToNotifications } from "./src/queues/listenNotifications.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const server = http.createServer(app);

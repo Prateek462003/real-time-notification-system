@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,5 +15,6 @@
     "express": "^4.19.2",
     "mongoose": "^8.6.1",
     "nodemon": "^3.1.4"
-  }
+  },
+  "type": "module"
 }
