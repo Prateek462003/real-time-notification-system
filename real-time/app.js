@@ -12,6 +12,6 @@ const server = http.createServer(app);
 init(server);
 listenToNotifications();
 
-server.listen(3000, () => {
-  console.log("Real-time service running on port 3000");
+server.listen(5000, () => {
+  console.log("Real-time service running on port 5000");
 });

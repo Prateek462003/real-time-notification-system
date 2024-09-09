@@ -13,28 +13,9 @@ services:
   real-time-service:
     build: ./real-time
     ports:
-      - "3000:3000"
+      - "5000:5000"
 
   client:
     build: ./notification-client
     ports:
       - "5173:5173"
-    # depends_on:
-    #   - auth-service
-    #   - notification-service
-    #   - real-time-service
-
-  # mongo:
-  #   image: mongo:latest
-  #   ports:
-  #     - "27017:27017"
-  #   volumes:
-  #     - mongo-data:/data/db
-
-  # rabbitmq:
-  #   image: rabbitmq:3-management
-  #   ports:
-  #     - "5672:5672"
-  #     - "15672:15672"
-# volumes:
-#   mongo-data:

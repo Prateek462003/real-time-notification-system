@@ -23,4 +23,4 @@ RUN npm install -g serve
 EXPOSE 5173
 
 # Serve the built Vite app
-CMD ["serve", "-s", "dist"]
+CMD ["serve", "-s", "dist", "-l", "5173"]

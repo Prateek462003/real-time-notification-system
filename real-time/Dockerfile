@@ -17,7 +17,7 @@ COPY . .
 WORKDIR /usr/src/app/src
 
 # Expose the port for real-time service
-EXPOSE 3000
+EXPOSE 5000
 
 # Start the real-time service
 CMD ["npm", "start"]
