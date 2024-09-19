@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Signup = ({ onSignup }) => {
+const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -16,7 +18,7 @@ const Signup = ({ onSignup }) => {
     });
 
     if (response.ok) {
-      onSignup();
+      navigate("/login");
     }
   };
 

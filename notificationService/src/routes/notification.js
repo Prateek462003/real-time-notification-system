@@ -15,6 +15,6 @@ router.get("/notifications", authMiddleware, getNotification);
 
 router.put("/notifications/:id", authMiddleware, markNotificationAsRead);
 
-router.put("/notifications/:id", authMiddleware, getNotificationById);
+router.get("/notifications/:id", authMiddleware, getNotificationById);
 
 export default router;

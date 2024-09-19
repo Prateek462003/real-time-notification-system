@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { io } from "socket.io-client";
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
@@ -18,6 +19,21 @@ const Notifications = () => {
     fetchNotifications();
   }, []);
 
+  useEffect(() => {
+    const socket = io("http://localhost:5000");
+
+    socket.on("newNotification", (notification) => {
+      setNotifications((prevNotifications) => [
+        notification,
+        ...prevNotifications,
+      ]);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
   const markAsRead = async (id) => {
     const token = localStorage.getItem("token");
     await fetch(`http://localhost:4001/api/notifications/${id}`, {
@@ -29,9 +45,10 @@ const Notifications = () => {
 
     setNotifications((prev) =>
       prev.map((notification) =>
-        notification.id === id ? { ...notification, read: true } : notification
+        notification._id === id ? { ...notification, read: true } : notification
       )
     );
+    ``;
   };
 
   return (
@@ -40,7 +57,7 @@ const Notifications = () => {
       <ul className="space-y-2">
         {notifications.map((notification) => (
           <li
-            key={notification.id}
+            key={notification._id}
             className={`p-4 border ${
               notification.read ? "bg-gray-100" : "bg-white"
             }`}
@@ -49,7 +66,7 @@ const Notifications = () => {
             {!notification.read && (
               <button
                 className="ml-4 text-blue-500"
-                onClick={() => markAsRead(notification.id)}
+                onClick={() => markAsRead(notification._id)}
               >
                 Mark as Read
               </button>

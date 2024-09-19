@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = ({ onLogin }) => {
-  const [username, setUsername] = useState("");
+const Login = () => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -11,13 +13,13 @@ const Login = ({ onLogin }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }), // Sending email in the request
     });
 
     const data = await response.json();
     if (response.ok) {
       localStorage.setItem("token", data.token);
-      onLogin();
+      navigate("/notifications");
     }
   };
 
@@ -26,10 +28,10 @@ const Login = ({ onLogin }) => {
       <h2 className="text-2xl font-bold">Login</h2>
       <input
         className="w-full p-2 border"
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        type="email" // Updated type to "email"
+        placeholder="Email" // Placeholder now says "Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)} // Updating state to handle email
       />
       <input
         className="w-full p-2 border"
